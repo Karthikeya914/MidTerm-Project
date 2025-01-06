@@ -18,7 +18,7 @@ searchButton.addEventListener("click", function () {
   )
     .then(function (response) {
       if (!response.ok) {
-        throw new Error("Error in fetching data");
+        throw new Error("Error in fetching data .Please Enter or Update The Access Token");
       }
       return response.json();
     })

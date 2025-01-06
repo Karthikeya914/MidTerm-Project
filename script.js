@@ -1,5 +1,5 @@
 const token =
-  "BQAvdNbKzUKMjBWswjI3HkBq_6XkttYsYcGBl46VeJNCFslYCwoAZb_YypOsvUUDWp7sEgByPBzObNsxWn6C7kS-y-611vtWXVdgGm4gPmXu_ggZDtM"; // Replace "YOUR_SPOTIFY_TOKEN" with the token you got from the terminal after running the code given in the readme file.
+  "YOUR_SPOTIFY_TOKEN"; // Replace "YOUR_SPOTIFY_TOKEN" with the token you got from the terminal after running the code given in the readme file.
 const searchButton = document.getElementById("search-btn");
 const resultContainer = document.getElementById("result-container");
 
@@ -31,7 +31,7 @@ searchButton.addEventListener("click", function () {
       }
     })
     .catch(function () {
-      alert("Please update the access token.");
+      alert("Please ENTER or UPDATE The Access Token.");
     });
 });
 

@@ -3,78 +3,64 @@ const token =
 const searchButton = document.getElementById("search-btn");
 const resultContainer = document.getElementById("result-container");
 
-searchButton.addEventListener("click", function () {
+searchButton.addEventListener("click", () => {
   const searchQuery = document.getElementById("search-bar").value.trim();
 
   if (!searchQuery) {
-    resultContainer.innerHTML =
-      "<p style='color: red;'>Please enter a search term!</p>";
+    alert("Please enter a search term!");
     return;
   }
 
   fetch(
-    "https://api.spotify.com/v1/search?q=" +
-      encodeURIComponent(searchQuery) +
-      "&type=track&limit=10",
+    `https://api.spotify.com/v1/search?q=${encodeURIComponent(
+      searchQuery
+    )}&type=track&limit=10`,
     {
-      headers: { Authorization: "Bearer " + token },
+      headers: { Authorization: `Bearer ${token}` },
     }
   )
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
+    .then((response) => response.json())
+    .then((data) => {
       if (!data.tracks || !data.tracks.items.length) {
-        resultContainer.innerHTML =
-          "<p style='color: red;'>No songs found.</p>";
+        resultContainer.innerHTML = "<p>No songs found.</p>";
       } else {
         displayResults(data.tracks.items);
       }
     })
-    .catch(function () {
-      resultContainer.innerHTML =
-        "<p style='color: red;'>Error fetching data. Please check your network or token and try again.</p>";
+    .catch(() => {
+      resultContainer.innerHTML = "<p>Error fetching data. Please try again.</p>";
     });
 });
 
 function displayResults(songs) {
-  var resultsHTML = "";
-  for (var i = 0; i < songs.length; i++) {
-    var song = songs[i];
-    resultsHTML +=
-      '<div class="song-result" onclick="zoomSong(this)">' +
-      '<img src="' +
-      song.album.images[0].url +
-      '" alt="Album Art">' +
-      '<div class="song-info">' +
-      "<h3>" +
-      song.name +
-      "</h3>" +
-      "<p>" +
-      song.artists[0].name +
-      "</p>" +
-      "<p>" +
-      song.album.name +
-      "</p>" +
-      "</div>" +
-      "</div>";
-  }
-  resultContainer.innerHTML = resultsHTML;
+  resultContainer.innerHTML = songs
+    .map(
+      (song) => `
+      <div class="song-result" onclick="zoomSong(this)">
+        <img src="${song.album.images[0].url}" alt="Album Art">
+        <div class="song-info">
+          <h3>${song.name}</h3>
+          <p>${song.artists[0].name}</p>
+          <p>${song.album.name}</p>
+        </div>
+      </div>
+    `
+    )
+    .join("");
 }
 
 function zoomSong(selectedSong) {
-  var songResults = document.querySelectorAll(".song-result");
-  for (var i = 0; i < songResults.length; i++) {
-    var song = songResults[i];
+  document.querySelectorAll(".song-result").forEach((song) => {
     song.classList.toggle("zoomed", song === selectedSong);
     song.classList.toggle("blurred", song !== selectedSong);
-  }
+  });
   selectedSong.addEventListener("mouseleave", resetZoom);
 }
 
 function resetZoom() {
-  var songResults = document.querySelectorAll(".song-result");
-  for (var i = 0; i < songResults.length; i++) {
-    songResults[i].classList.remove("zoomed", "blurred");
-  }
+  document.querySelectorAll(".song-result").forEach((song) => {
+    song.classList.remove("zoomed", "blurred");
+  });
 }
+
+it should send an alert while there is an error in fetching data

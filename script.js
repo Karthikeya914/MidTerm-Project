@@ -2,12 +2,15 @@ const token =
   "BQAvdNbKzUKMjBWswjI3HkBq_6XkttYsYcGBl46VeJNCFslYCwoAZb_YypOsvUUDWp7sEgByPBzObNsxWn6C7kS-y-611vtWXVdgGm4gPmXu_ggZDtM"; // Replace "YOUR_SPOTIFY_TOKEN" with the token you got from the terminal after running the code given in the readme file.
 const searchButton = document.getElementById("search-btn");
 const resultContainer = document.getElementById("result-container");
+
 searchButton.addEventListener("click", function () {
   const searchQuery = document.getElementById("search-bar").value.trim();
+
   if (!searchQuery) {
     alert("Please enter a search term!");
     return;
   }
+
   fetch(
     `https://api.spotify.com/v1/search?q=${encodeURIComponent(
       searchQuery
@@ -31,6 +34,7 @@ searchButton.addEventListener("click", function () {
       alert("Please update the access token.");
     });
 });
+
 function displayResults(songs) {
   resultContainer.innerHTML = songs
     .map(function (song) {
@@ -47,6 +51,7 @@ function displayResults(songs) {
     })
     .join("");
 }
+
 function zoomSong(selectedSong) {
   document.querySelectorAll(".song-result").forEach(function (song) {
     song.classList.toggle("zoomed", song === selectedSong);
@@ -54,6 +59,7 @@ function zoomSong(selectedSong) {
   });
   selectedSong.addEventListener("mouseleave", resetZoom);
 }
+
 function resetZoom() {
   document.querySelectorAll(".song-result").forEach(function (song) {
     song.classList.remove("zoomed", "blurred");

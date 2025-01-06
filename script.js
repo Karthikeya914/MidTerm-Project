@@ -1,5 +1,5 @@
 const token =
-  "BQDtwze257N9TuZYUgwSRu7w92-GdeBxzGG0XVMG9WeHWlsaSarmoZY37a1hg_Lt5I2GFsx30pu39T3ZbJuepteJimtKq9xqObOPYUa27Pj50RQ4dFA"; // Replace with your Spotify token
+  "BQDUrwrfDwK_vLnpDlCLm13UPCeMBpPWfzjBCFGJzklA3q1y2Q7z6R8uZH6jNpr7q5OkW2T77MhR-X8GsIa_4WdPpicPNfrGYngCOGxU6ghnHWPLHus"; // Replace with your Spotify token
 const searchButton = document.getElementById("search-btn");
 const resultContainer = document.getElementById("result-container");
 

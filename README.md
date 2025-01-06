@@ -1,3 +1,6 @@
+* For a better understanding , view the file in the edit section *
+
+*  
 this project allows you to fetch songs across all genres by artist name, song name or movie name using spotify's user search api
 to make use of this you should run the following command in your terminal
 the command which needs to be run  in the terminal:

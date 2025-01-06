@@ -1,4 +1,4 @@
-const token = "YOUR_SPOTIFY_TOKEN";// Replace "YOUR_SPOTIFY_TOKEN" with the token you got from terminal after running the code given in readme file.
+const token = "BQBTCwhu7MGw4YvrLDyJx5llDbZGigIFRWgkaVG1UiWv5jeYtJMfvvLc26WXnDaDuEzX8uq6YpyqsBWS1X24sHfNd4nuE8y3UjAZi41tdDRhmpS9lCs";// Replace "YOUR_SPOTIFY_TOKEN" with the token you got from terminal after running the code given in readme file.
       const searchButton = document.getElementById("search-btn");
       const resultContainer = document.getElementById("result-container");
       const finalbox = ""; 
